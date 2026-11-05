@@ -1,0 +1,41 @@
+/* Screen 3: Easy swipe organizer. */
+.stage { position: relative; flex: 1; min-height: 340px; margin: 4px 0; display: grid; place-items: center; padding: 38px 26px; }
+.edge { position: absolute; display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 800; letter-spacing: .12em; color: #6b7480; opacity: calc(.8 + var(--pull, 0) * .2); transform: scale(calc(1 + var(--pull, 0) * .18)); transition: color .15s, transform .15s var(--ease); pointer-events: none; z-index: 3; padding: 6px 4px; border-radius: 999px; }
+.edge .ico { width: 16px; height: 16px; }
+.edge.active { color: #fff; background: var(--accent); padding: 8px 8px; }
+.edge-up { top: 10px; left: 50%; translate: -50% 0; }
+.edge-down { bottom: 10px; left: 50%; translate: -50% 0; }
+.edge-left { left: 4px; top: 50%; translate: 0 -50%; flex-direction: row; }
+.edge-right { right: 4px; top: 50%; translate: 0 -50%; flex-direction: row-reverse; }
+.edge-left { color: #c8665a; }
+.edge-left.active { color: #fff; background: var(--danger); }
+.edge-left, .edge-right { writing-mode: vertical-rl; }
+.edge-left .ico, .edge-right .ico { writing-mode: horizontal-tb; }
+.edge-left { rotate: 180deg; }
+.edge-left .ico { rotate: 180deg; }
+
+.swipe-card { grid-area: 1 / 1; width: 100%; max-width: 310px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 18px 18px 16px; box-shadow: var(--shadow); transform: rotate(-1.5deg); cursor: grab; user-select: none; -webkit-user-select: none; z-index: 2; will-change: transform; transition: transform .3s var(--ease), opacity .25s; animation: card-in .35s var(--ease); }
+@keyframes card-in { from { opacity: 0; scale: .94; } to { opacity: 1; scale: 1; } }
+.swipe-card.dragging { transition: none; cursor: grabbing; animation: none; }
+.swipe-card.flung { transition: transform .26s ease-in, opacity .26s; pointer-events: none; }
+.swipe-card.behind { z-index: 1; transform: rotate(2deg) translateY(10px) scale(.96); opacity: .7; cursor: default; height: 80%; align-self: end; animation: none; }
+.card-meta { color: var(--muted); font-size: 13px; }
+.card-title { font-size: 22px; line-height: 1.15; font-weight: 800; letter-spacing: -.01em; margin: 6px 0 12px; }
+.ai-label { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark); background: var(--accent-soft); padding: 3px 8px; border-radius: 999px; }
+.card-summary { margin-top: 8px; font-size: 15px; font-weight: 600; color: var(--ink-2); }
+.card-body { margin-top: 10px; font-size: 14px; color: var(--muted); line-height: 1.5; }
+.card-attach { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: 13px; color: var(--ink-2); }
+.card-replied { margin-top: 10px; font-size: 13px; font-weight: 700; color: var(--ok); }
+
+.hint { text-align: center; color: var(--muted); font-size: 14px; }
+.act-row { display: flex; justify-content: center; gap: 10px; padding: 12px 16px 6px; }
+.act-btn { width: 74px; min-height: 58px; border-radius: 16px; background: #fff; border: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px; font-weight: 700; color: var(--ink-2); transition: transform .15s var(--ease), background .2s; }
+.act-btn .ico { width: 20px; height: 20px; }
+.act-btn:active { transform: scale(.94); background: var(--accent-soft); }
+.act-btn[data-act="delete"] { color: var(--danger); }
+.screen-organizer > .pill-btn-row { padding: 6px 16px calc(14px); }
+
+.sort-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 10px; padding: 24px; animation: pop-row .4s var(--ease); }
+.empty-check { width: 76px; height: 76px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+.empty-check svg { width: 38px; height: 38px; }
+.empty-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; width: 100%; max-width: 260px; }

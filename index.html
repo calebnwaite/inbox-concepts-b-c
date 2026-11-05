@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Group 11 · High-fidelity email prototypes</title>
+<style>
+  :root {
+    --accent: #E8590C; --accent-dark: #C2470A; --accent-soft: #FFF1E8;
+    --ink: #16181d; --ink-2: #3b4049; --muted: #6b7280; --line: #e7e9ee; --bg: #f4f5f7; --card: #fff;
+    --radius: 18px;
+    --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 6px 20px rgba(16, 24, 40, .08);
+    --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.5; }
+  main { max-width: 960px; margin: 0 auto; padding: 40px 20px 32px; }
+  .eyebrow { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-dark); font-size: 13px; font-weight: 600; letter-spacing: .02em; }
+  h1 { margin: 14px 0 8px; font-size: clamp(28px, 6vw, 44px); line-height: 1.15; letter-spacing: -.02em; }
+  .lead { margin: 0 0 28px; color: var(--ink-2); font-size: clamp(16px, 2.4vw, 19px); max-width: 60ch; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .card { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 44px; padding: 26px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); color: inherit; text-decoration: none; transition: transform .15s, box-shadow .15s, border-color .15s; }
+  .card:hover, .card:focus-visible { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(232, 89, 12, .18); outline: none; }
+  .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .tag { color: var(--accent-dark); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+  .card h2 { margin: 6px 0 4px; font-size: 24px; line-height: 1.25; }
+  .by { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+  .try { margin: 0; color: var(--ink-2); }
+  .open { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 600; align-self: flex-start; }
+  .card:hover .open { background: var(--accent-dark); }
+  .note { margin: 28px 0 0; padding: 14px 18px; border-radius: 12px; background: #fff6dd; color: #8a6100; font-size: 14px; }
+  footer { margin-top: 24px; color: var(--muted); font-size: 14px; }
+  footer a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-dark); }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+</style>
+</head>
+<body>
+<main>
+  <span class="eyebrow">Group 11 · Innovation Processes</span>
+  <h1>High-fidelity prototypes</h1>
+  <p class="lead">Two clickable concepts for a smarter email inbox. Pick one and try it, on your phone or your laptop.</p>
+
+  <div class="cards">
+    <a class="card" href="concept-b/index.html">
+      <div>
+        <span class="tag">Sketch #3</span>
+        <h2>Concept B: Mobile-First, Hands-Free</h2>
+        <p class="by">Sketch by Elise Valentic</p>
+        <p class="try">Try it on your phone: triage your inbox with taps and your voice.</p>
+      </div>
+      <span class="open">Open Concept B →</span>
+    </a>
+    <a class="card" href="concept-c/index.html">
+      <div>
+        <span class="tag">Sketch #5</span>
+        <h2>Concept C: Swipe to Prioritize + Smart Inbox</h2>
+        <p class="by">Sketch by Caleb Kitt</p>
+        <p class="try">Swipe emails left or right to prioritize them and watch the smart inbox reorder.</p>
+      </div>
+      <span class="open">Open Concept C →</span>
+    </a>
+  </div>
+
+  <p class="note">All data in these prototypes is fake and nothing is ever sent.</p>
+  <footer>Also see the earlier <a href="https://calebnwaite.github.io/inbox-priority-prototype/">Concept 4 prototype</a>.</footer>
+</main>
+</body>
+</html>

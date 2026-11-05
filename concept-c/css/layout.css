@@ -1,0 +1,32 @@
+/* Page layout. Wide: phone and desktop side by side. Narrow: one full-screen view chosen by the tab bar. */
+.app-bar { display: flex; align-items: center; gap: 24px; padding: 16px 28px 8px; }
+.brand h1 { font-size: 24px; letter-spacing: -.01em; }
+.tagline { flex: 1; max-width: 560px; color: var(--muted); font-size: 13px; margin-left: auto; }
+.bar-actions { display: flex; gap: 10px; align-items: center; }
+
+.stage { display: flex; gap: 32px; justify-content: center; align-items: flex-start; padding: 8px 28px 28px; }
+.phone-wrap { flex: 0 0 auto; width: 372px; }
+.desktop-wrap { flex: 1 1 auto; min-width: 0; max-width: 1000px; }
+.caption { text-align: center; color: var(--muted); font-weight: 600; font-size: 13px; margin-top: 12px; }
+.cap-summary { display: none; }
+body[data-view="summary"] .cap-summary { display: inline; }
+body[data-view="summary"] .cap-sort { display: none; }
+.tabbar { display: none; }
+
+@media (max-width: 820px) {
+  body { height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+  .app-bar { padding: calc(8px + var(--safe-top)) 14px 8px; gap: 8px; }
+  .tagline { display: none; }
+  .brand { flex: 1; min-width: 0; }
+  .brand .eyebrow { font-size: 10px; }
+  .brand h1 { font-size: 15px; line-height: 1.15; }
+  .btn-outline { padding: 0 14px; }
+  .stage { flex: 1; min-height: 0; padding: 0; gap: 0; display: block; position: relative; }
+  .phone-wrap, .desktop-wrap { position: absolute; inset: 0; width: auto; max-width: none; display: none; }
+  .caption { display: none; }
+  body[data-view="sort"] .phone-wrap, body[data-view="summary"] .phone-wrap, body[data-view="inbox"] .desktop-wrap { display: block; }
+  .tabbar { display: flex; background: var(--surface); border-top: 1px solid var(--border); padding-bottom: var(--safe-bottom); flex: none; }
+  .tabbar button { flex: 1; min-height: 56px; border: 0; background: none; font-weight: 600; color: var(--muted); border-top: 3px solid transparent; }
+  .tabbar button.active { color: var(--accent-dark); border-top-color: var(--accent); }
+  .toast, .tour { bottom: calc(72px + var(--safe-bottom)); }
+}

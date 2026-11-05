@@ -1,0 +1,16 @@
+/* Screen 2: Automatic calendar. */
+.screen-calendar .pill-row { padding: 8px 20px 4px; }
+.timeline { padding: 10px 20px 8px; display: flex; flex-direction: column; gap: 12px; position: relative; }
+.cal-row { display: flex; gap: 12px; align-items: stretch; animation: pop-row .3s var(--ease) backwards; }
+@keyframes pop-row { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.cal-time { width: 62px; flex: none; padding-top: 14px; font-size: 13px; font-weight: 600; color: var(--muted); text-align: right; }
+.cal-card { flex: 1; min-width: 0; min-height: 64px; display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 10px 14px; border-radius: 16px; background: #fff; border: 1px solid var(--line); text-align: left; box-shadow: 0 1px 2px rgba(31, 41, 51, .04); }
+.cal-card.is-reply { border-left: 5px solid var(--accent); cursor: pointer; transition: transform .15s var(--ease); }
+.cal-card.is-reply:active { transform: scale(.98); }
+.cal-title { font-weight: 700; font-size: 16px; }
+.cal-note { color: var(--muted); font-size: 14px; }
+.cal-card.is-reply .cal-note { color: var(--accent-dark); font-weight: 600; }
+.cal-card.is-replied { background: #f1eee8; border-left-color: #cfc8bb; opacity: .75; }
+.cal-card.is-replied .cal-title { text-decoration: line-through; color: var(--muted); }
+.cal-card.is-replied .cal-note { color: var(--ok); }
+.cal-empty { padding: 28px 12px; text-align: center; color: var(--muted); }

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" href="data:,">
+  <title>Concept C: Swipe to Prioritize + Smart Inbox</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/phone.css">
+  <link rel="stylesheet" href="css/inbox.css">
+  <link rel="stylesheet" href="css/summary.css">
+</head>
+<body data-view="sort">
+  <header class="app-bar">
+    <div class="brand"><span class="eyebrow">Concept C</span><h1>Swipe to Prioritize + Smart Inbox</h1></div>
+    <p class="tagline">Swipe on your phone to mark what matters. Your desktop inbox reorders to match, learns who you prioritize, suggests hand-offs, and sends a daily summary you can ask questions about.</p>
+    <div class="bar-actions">
+      <button type="button" id="tour-btn" class="icon-btn" aria-label="Show the guided tour" title="Guided tour">?</button>
+      <button type="button" id="reset-btn" class="btn-outline">Reset demo</button>
+    </div>
+  </header>
+
+  <main class="stage">
+    <section class="phone-wrap" aria-label="Phone">
+      <div class="phone">
+        <div class="phone-switch" role="tablist" aria-label="Phone screen">
+          <button type="button" role="tab" data-view-tab="sort" class="active">Sort</button>
+          <button type="button" role="tab" data-view-tab="summary">Summary</button>
+        </div>
+
+        <div id="sort-screen" class="screen" tabindex="-1">
+          <header class="screen-head"><h2>Sort</h2><span class="sort-count" aria-live="polite"></span>
+            <button type="button" class="link-btn" data-act="undo">Undo</button></header>
+          <div class="stack-area">
+            <div class="stack" aria-live="off"></div>
+            <div class="sort-done">
+              <h3>All sorted</h3><p class="sort-done-text"></p>
+              <button type="button" class="btn-primary" data-act="to-summary">Open Daily Summary</button>
+            </div>
+          </div>
+          <div class="edge-hints"><span class="hint-later">← LATER</span><span class="hint-priority">PRIORITY →</span></div>
+          <div class="sort-buttons">
+            <button type="button" class="btn-outline big" data-act="later">Later</button>
+            <button type="button" class="btn-primary big" data-act="priority">Priority</button>
+          </div>
+        </div>
+
+        <div id="summary-screen" class="screen">
+          <div id="summary-scroll" class="summary-scroll">
+            <p class="eyebrow">Thursday morning</p>
+            <h2 class="summary-title">Daily Summary</h2>
+            <h3 class="section-label">Priority · in depth</h3>
+            <div id="summary-priority"></div>
+            <h3 class="section-label">Everything else · quick hits</h3>
+            <ul id="summary-rest" class="quick-hits"></ul>
+            <h3 class="section-label">Ask about today’s email</h3>
+            <div id="chat-log" class="chat-log" aria-live="polite"></div>
+            <div id="chat-chips" class="chips"></div>
+          </div>
+          <form id="chat-form" class="chat-form" autocomplete="off">
+            <input id="chat-input" type="text" placeholder="Ask about today’s email…" aria-label="Ask about today’s email" enterkeyhint="send">
+            <button type="submit" class="send-btn" aria-label="Send question">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <p class="caption"><span class="cap-sort">1 – Swipe on your phone</span><span class="cap-summary">3 – AI summary + chat</span></p>
+    </section>
+
+    <section id="inbox" class="desktop-wrap" aria-label="Desktop inbox">
+      <div class="window">
+        <div class="window-bar"><span class="dots"><i></i><i></i><i></i></span><span class="address">mail.prairiestate.example/inbox</span></div>
+        <div class="window-body">
+          <div class="inbox-main">
+            <h2 class="section-label">Priority · sorted by your swipes <span id="priority-count" class="count"></span></h2>
+            <ol id="list-priority" class="rows"></ol>
+            <p id="priority-empty" class="empty-note" hidden>Nothing here yet. Swipe right on the phone and emails land here.</p>
+            <h2 class="section-label">Everything else <span id="rest-count" class="count"></span></h2>
+            <ol id="list-rest" class="rows"></ol>
+          </div>
+          <aside class="why" aria-label="Why this order">
+            <h2>Why this order</h2>
+            <div id="why-cards"></div>
+            <p class="callout">The inbox learns from your swipes. Mark a sender priority a couple of times and their other emails rise without you touching them.</p>
+            <div class="confidence">
+              <div class="confidence-head"><span>Sorting confidence</span><strong id="confidence-value"></strong></div>
+              <div id="confidence-bar" class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Sorting confidence"><i id="confidence-fill"></i></div>
+              <p class="why-caption">Adjusts with each swipe</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <p class="caption">2 – Desktop inbox reorders and learns</p>
+    </section>
+  </main>
+
+  <nav class="tabbar" role="tablist" aria-label="Screens">
+    <button type="button" role="tab" data-view-tab="sort" class="active">Sort</button>
+    <button type="button" role="tab" data-view-tab="inbox">Inbox</button>
+    <button type="button" role="tab" data-view-tab="summary">Summary</button>
+  </nav>
+
+  <aside id="tour" class="tour" hidden role="dialog" aria-label="Guided tour"></aside>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/learning.js"></script>
+  <script src="js/thumbs.js"></script>
+  <script src="js/swipe.js"></script>
+  <script src="js/sort.js"></script>
+  <script src="js/why.js"></script>
+  <script src="js/inbox.js"></script>
+  <script src="js/summary.js"></script>
+  <script src="js/answers.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/tour.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

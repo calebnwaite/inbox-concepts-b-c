@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#131a26">
+  <link rel="icon" href="data:,">
+  <title>Concept B · Mobile-First, Hands-Free</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/shell.css">
+  <link rel="stylesheet" href="css/reader.css">
+  <link rel="stylesheet" href="css/calendar.css">
+  <link rel="stylesheet" href="css/organizer.css">
+  <link rel="stylesheet" href="css/workload.css">
+  <link rel="stylesheet" href="css/overlays.css">
+</head>
+<body>
+  <main class="stage-page">
+    <aside class="caption">
+      <p class="caption-eyebrow">Concept B</p>
+      <h1 class="caption-heading">Mobile-First, <span class="nobr">Hands-Free</span></h1>
+      <p class="caption-lede">Built for the truck and the job site. Listen to and answer email by voice, get reply deadlines on your calendar, clear your inbox with four swipes, and see your workload at a glance.</p>
+      <h2 id="caption-title" class="caption-screen"></h2>
+      <p id="caption-text" class="caption-text"></p>
+      <div class="caption-buttons">
+        <button type="button" id="caption-tour" class="btn btn-ghost-dark">Guided tour</button>
+        <button type="button" id="caption-reset" class="btn btn-ghost-dark">Reset demo</button>
+      </div>
+    </aside>
+
+    <div id="device" class="device" data-screen="reader">
+      <section id="screen-reader" class="screen screen-reader" aria-label="Verbal updates"></section>
+      <section id="screen-calendar" class="screen screen-calendar" aria-label="Automatic calendar" hidden></section>
+      <section id="screen-organizer" class="screen screen-organizer" aria-label="Easy swipe organizer" hidden></section>
+      <section id="screen-workload" class="screen screen-workload" aria-label="Folders and workload" hidden></section>
+      <nav id="tabbar" class="tabbar" role="tablist" aria-label="Screens"></nav>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      <div id="sheet-root" class="sheet-root"></div>
+      <div id="tour-root" class="tour-root"></div>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/domain.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/swipe.js"></script>
+  <script src="js/tour.js"></script>
+  <script src="js/reader.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/organizer.js"></script>
+  <script src="js/workload.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

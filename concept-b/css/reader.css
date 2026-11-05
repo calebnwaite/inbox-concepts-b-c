@@ -1,0 +1,47 @@
+/* Screen 1: Verbal updates (dark, hands-free). */
+.screen-reader { background: var(--navy); color: #fff; }
+.screen-reader .topbar { color: #9fb0c8; }
+.screen-reader .counter { margin-left: auto; font-size: 14px; font-weight: 600; color: #cdd7e6; }
+.screen-reader .icon-btn { color: #a9b6ca; margin-right: -8px; }
+.reader-body { flex: 1; display: flex; flex-direction: column; padding: 6px 24px 18px; gap: 14px; }
+.now-label { color: #a9b6ca; font-size: 14px; margin-top: 10px; }
+.headline { font-size: 30px; line-height: 1.12; font-weight: 800; letter-spacing: -.02em; margin-top: -6px; }
+.spoken { color: #b9c5d8; font-size: 15px; line-height: 1.45; }
+.reader-body .pill-btn-row { justify-content: flex-start; }
+
+.wave { display: flex; align-items: center; justify-content: center; gap: 4px; height: 70px; margin: 2px 0; }
+.bar { width: 5px; height: var(--h); max-height: 100%; border-radius: 3px; background: linear-gradient(#f07a3d, var(--accent)); transform: scaleY(.38); transform-origin: center; opacity: .7; animation: idle 2.6s ease-in-out infinite; animation-delay: var(--d); }
+.is-reading .bar, .is-listening .bar { opacity: 1; animation: wave .9s ease-in-out infinite; animation-delay: var(--d); }
+.is-listening .bar { animation-duration: .6s; }
+@keyframes wave { 0%, 100% { transform: scaleY(.25); } 50% { transform: scaleY(1); } }
+@keyframes idle { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(.5); } }
+
+.mic-wrap { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.mic { width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: radial-gradient(circle at 30% 25%, #f58a50, var(--accent) 60%, var(--accent-dark)); box-shadow: 0 10px 28px rgba(210, 87, 28, .45); transition: transform .15s var(--ease); position: relative; }
+.mic svg { width: 40px; height: 40px; }
+.mic:active { transform: scale(.94); }
+.mic::after { content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 2px solid rgba(240, 122, 61, .35); }
+.mic-label { margin-top: 8px; font-weight: 700; font-size: 17px; }
+.mic-sub { color: #a9b6ca; font-size: 13px; }
+.real-mic { display: flex; align-items: center; justify-content: center; gap: 8px; color: #a9b6ca; font-size: 13px; min-height: 36px; }
+.real-mic input { width: 20px; height: 20px; accent-color: var(--accent); }
+
+.dictation { background: var(--navy-2); border: 1px solid var(--navy-line); border-radius: 20px; padding: 14px 16px 12px; animation: pop .25s var(--ease); }
+@keyframes pop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+.dictation-label { color: #ff9a62; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.transcript { margin-top: 6px; font-size: 17px; line-height: 1.4; min-height: 48px; }
+.transcript.typing::after { content: ""; display: inline-block; width: 2px; height: 1em; background: #ff9a62; margin-left: 2px; vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.reply-edit { width: 100%; margin-top: 6px; font-size: 16px; line-height: 1.4; padding: 10px; border-radius: 12px; border: 1px solid var(--navy-line); background: var(--navy); color: #fff; resize: none; }
+.dictation-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.dictation-actions .btn { min-height: 44px; padding: 0 16px; font-size: 15px; }
+.dictation-actions .btn-primary { flex: 1; }
+
+.replied-badge { align-self: center; display: inline-flex; align-items: center; gap: 6px; color: #7fd3a6; font-weight: 700; font-size: 14px; }
+.replied-badge .ico { width: 18px; height: 18px; }
+.nav-row { display: flex; gap: 12px; margin-top: auto; padding: 6px 0 8px; }
+.nav-row .btn { flex: 1; min-height: 52px; font-size: 17px; }
+.nav-row .btn-outline { color: #e8edf5; border-color: #3a4a64; }
+.nav-row .btn:hover { background: rgba(255, 255, 255, .06); }
+.reader-body.done { justify-content: center; align-items: flex-start; }
+.reader-body.done .btn { margin-top: 12px; }
